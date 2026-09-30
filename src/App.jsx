@@ -1,9 +1,28 @@
-function App() {
+import { createBrowserRouter } from "react-router";
+import { RouterProvider } from "react-router/dom";
+import Home from "./pages/Home";
+// import AboutUs from "./pages/AboutUs";
+import MainLayout from "./layouts/MainLayout";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    Component: MainLayout,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+    ],
+  },
+]);
+
+function Router() {
   return (
     <>
-      <h1 className="text-2xl text-red-800">Wecome to my weather app</h1>
+      <RouterProvider router={router} />
     </>
   );
 }
 
-export default App;
+export default Router;
